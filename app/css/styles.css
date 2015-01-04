@@ -109,7 +109,7 @@ footer {
 	padding: 5px;
 }
 
-button.block {
+a.block, button.block, a.block:visited {
 	padding: 5px 0;
 	margin: 10px 0 0 0;
 	border: 2px solid #73995A;
@@ -125,6 +125,11 @@ button.block {
 	cursor: pointer;
 	font-size: 16px;
 	font-weight: bold;
+}
+
+a.block:hover {
+	text-decoration: none;
+	color: #000;
 }
 
 #left-col .box h3,#right-col .box h3 {

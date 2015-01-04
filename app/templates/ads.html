@@ -1,0 +1,41 @@
+<div ng-controller="MainAdsController">
+	<div class="box" ng-repeat="ad in ads">
+		<div class="heading row">
+			<h1 class="col-md-9">{{ad.title}}</h1>
+			<span class="date col-md-3">{{ad.date | date: 'dd.MM.yyyy'}}</span>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="image">
+					<img ng-src="{{ad.imageDataUrl ? ad.imageDataUrl : 'images/no-photo.png'}}" alt="{{ad.title}}" title="{{ad.title}}" />
+				</div>						
+			</div>
+			<div class="details col-md-8">
+				<div class="description">{{ad.text}}</div>
+				<div>Name: <div>{{ad.ownerName}}</div></div>
+				<div>Email: <div>{{ad.ownerEmail}}</div></div>
+				<div>Tel: <div>{{ad.ownerPhone}}</div></div>
+			</div>
+		</div>
+	</div>
+	<nav class="text-center">
+		<ul class="pagination">
+			<li class="disabled"><a href="javascript:;">Pages: </a></li>
+			<li>
+				<a href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				</a>
+			</li>
+			<li><a href="#">1</a></li>
+			<li><a href="#">2</a></li>
+			<li><a href="#">3</a></li>
+			<li><a href="#">4</a></li>
+			<li><a href="#">5</a></li>
+			<li>
+				<a href="#" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</div>
