@@ -12,13 +12,15 @@
 	<header id="topHeader">Ads - Home</header>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3" id="left-col">
+			<div class="col-md-3" id="left-col" ng-controller="AuthenticationController">
+				<h3 ng-show="userIsLoggedIn">Hello, {{userData.name}}</h3>
 				<div class="box">
 					<h3>Menu</h3>
 					<div class="list-group">
 						<a href="#/" class="list-group-item active">Home</a>
-						<a href="#/login" class="list-group-item">Login</a>
-						<a href="#/register" class="list-group-item">Register</a>
+						<a href="#/login" class="list-group-item" ng-hide="userIsLoggedIn">Login</a>
+						<a href="#/register" class="list-group-item" ng-hide="userIsLoggedIn">Register</a>
+						<a href="#/logout" class="list-group-item" ng-show="userIsLoggedIn">Logout</a>
 					</div>
 				</div>
 			</div>
@@ -41,5 +43,8 @@
 	<script type="text/javascript" src="js/controllers/MainAdsController.js"></script>
 	<script type="text/javascript" src="js/controllers/LoginController.js"></script>
 	<script type="text/javascript" src="js/controllers/RegistrationController.js"></script>
+	<script type="text/javascript" src="js/controllers/AuthenticationController.js"></script>
+	<script type="text/javascript" src="js/controllers/LogoutController.js"></script>
+	<script type="text/javascript" src="js/controllers/user/UserHomeController.js"></script>
 </body>
 </html>
