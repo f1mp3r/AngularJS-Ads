@@ -1,8 +1,8 @@
 'use strict'
 
-var adsModule = angular.module('adsModule', ['ngRoute']);
+var adsModule = angular.module('adsModule', ['ngRoute', 'ngSanitize']);
 
-adsModule.constant('constants',{
+adsModule.constant('constants', {
 	baseUrl: 'http://softuni-ads.azurewebsites.net/api/',
 	defaultPageSize: 5,
 	defaultStartPage: 1,
@@ -17,10 +17,12 @@ adsModule.config(['$routeProvider',
 				controller: 'MainAdsController'
 			}).
 			when('/login', {
-				templateUrl: 'templates/login.html'
+				templateUrl: 'templates/login.html',
+				controller: 'LoginController'
 			}).
 			when('/register', {
-				templateUrl: 'templates/register.html'
+				templateUrl: 'templates/registration-form.html',
+				controller: 'RegistrationController'
 			}).
 			otherwise({
 				redirectTo: '/'

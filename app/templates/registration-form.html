@@ -1,0 +1,62 @@
+<div class="row centered-form" ng-controller="RegistrationController">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Please sign up <small>It's free!</small></h3>
+			</div>
+			<div class="panel-body">
+				<div class="alert alert-success" role="alert" ng-show="userIsRegistered">Your registration was successfull!</div>
+				<form role="form" name="RegistrationForm">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="text" name="username" id="username" class="form-control input-sm" ng-model="newUser.username" placeholder="Username" />
+							</div>
+							<div class="alert alert-warning" role="alert" ng-show="RegistrationForm.username.$error.required && RegistrationForm.username.$dirty">
+								<strong>Warning!</strong> Username is required!
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="text" name="name" id="name" class="form-control input-sm" ng-model="newUser.name" placeholder="Your Name" />
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<input type="email" name="email" id="email" class="form-control input-sm" ng-model="newUser.email" placeholder="Email Address" />
+					</div>
+
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="password" name="password" id="password" class="form-control input-sm" ng-model="newUser.password" placeholder="Password" />
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="password" name="password_confirmation" id="password_confirmation" ng-model="newUser.confirmPassword" class="form-control input-sm" placeholder="Confirm Password" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="form-group">
+								<input type="text" name="phone" id="phone" class="form-control input-sm" ng-model="newUser.phone" placeholder="Your phone" />
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6">
+							<div class="form-group">
+								<select name="town" class="bs" id="town" ng-model="newUser.townId">
+									<option selected="selected">Please select your town</option>
+									<option value="{{town.id}}" ng-repeat="town in towns">{{town.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<button ng-click="register()" class="btn btn-info btn-block">Register</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
