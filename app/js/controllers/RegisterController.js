@@ -3,17 +3,13 @@
 app.controller('RegisterController', function ($scope, $location, authService, notifyService, townsService) {
 	$scope.pageData.title = 'Register';
 	$scope.pageData.showSidebar = false;
-
-	$scope.userData = {townId: null};
 	$scope.towns = townsService.getTowns();
-
-	// TODO: load the towns in $scope (for the towns drop-down list)
 
 	$scope.register = function(userData) {
 		authService.register(userData,
 			function success() {
-				// TODO: display success message
-				// TODO: redirect to login screen
+				notifyService.showInfo('You have successfully registered!');
+				window.location = '#/user/ads';
 			},
 			function error(err) {
 				notifyService.showError("User registration failed", err);

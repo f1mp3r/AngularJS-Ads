@@ -1,41 +1,64 @@
-<div class="box">
-	<h2>Publish New Ad</h2>
-	<p>
-		<label for="title">Title:</label>
-		<input type="text" id="title" ng-model="adData.title" required />
-	</p>
-	
-	<p>
-		<label for="text">Ad description</label><br />
-		<textarea id="text" ng-model="adData.text"></textarea>
-	</p>
-
-	<p>
-		<label for="category">Category:</label>
-		<select id="category" ng-model="adData.categoryId">
-			<option value="null">(None)</option>
-			<option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
-		</select>
-	</p>
-
-	<p>
-		<label for="category">Town:</label>
-		<select id="category" ng-model="adData.townId">
-			<option value="null">(None)</option>
-			<option ng-repeat="t in towns" value="{{t.id}}">{{t.name}}</option>
-		</select>
-	</p>
-
-	<p>
-		<a ng-click="publishAd(adData)" class="button">Publish</a>
-		<a href="#/user/ads" class="button">Cancel</a>
-	<p>
-	<p>
-		<label for="image">Image:</label>
-		<input type="file" id="image" onchange="angular.element(this).scope().fileSelected(this)" />
-		<div class="image-box">
-			<p>Image Preview</p>
+<div class="box" ng-controller="UserPublishNewAdController" flow-init="{singleFile:true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
+	<h1 class="text-center">Publish New Ad</h1>
+	<div class="row">
+		<div class="col-md-8 margin-bottom">
+			<div class="row">
+				<div class="col-md-2">
+					<label for="title"><span class="text-danger">*</span> Title:</label>
+				</div>
+				<div class="col-md-10">
+					<input type="text" id="title" class="form-control" ng-model="adData.title" placeholder="Ad title" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label for="text"><span class="text-danger">*</span> Text:</label>
+				</div>
+				<div class="col-md-10">
+					<textarea id="text" class="form-control" ng-model="adData.text" placeholder="Ad text"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label for="image">Image:</label>
+				</div>
+				<div class="col-md-10">
+					<div class="input-group">
+						<input type="file" flow-btn id="image" ng-model="adData.newImage" class="form-control" placeholder="Ad image" />
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label for="category">Category</label>
+				</div>
+				<div class="col-md-10">
+					<select id="category" class="form-control" ng-model="adData.categoryId">
+						<option value="null">(None)</option>
+						<option ng-repeat="c in categories" value="{{c.id}}">{{c.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label for="town">Town</label>
+				</div>
+				<div class="col-md-10">
+					<select id="town" class="form-control" ng-model="adData.townId">
+						<option value="null">(None)</option>
+						<option ng-repeat="t in towns" value="{{t.id}}">{{t.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="text-center">
+				<button class="btn btn-success btn-lg" ng-click="publishAd(adData)">Publish ad</button>
+			</div>
 		</div>
-	</p>
-
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img ng-show="!$flow.files.length" ng-src="{{adData.imageDataUrl ? adData.imageDataUrl : appData.defaultImage}}" alt="{{adData.title}}" />
+				<img ng-show="$flow.files.length" ng-model="adData.imageDataUrl" flow-img="$flow.files[0]" alt="{{adData.title}}" />
+			</div>
+		</div>
+	</div>
 </div>

@@ -23,19 +23,12 @@ app.controller('UserPublishNewAdController', function ($scope, $location, townsS
 		);
 	};
 
-	$scope.fileSelected = function(fileInputField) {
-		delete $scope.adData.imageDataUrl;
-		var file = fileInputField.files[0];
-		if (file.type.match(/image\/.*/)) {
-			var reader = new FileReader();
-			reader.onload = function() {
-				$scope.adData.imageDataUrl = reader.result;
-				$(".image-box").html("<img src='" + reader.result + "'>");
-			};
-			reader.readAsDataURL(file);
-		} else {
-			$(".image-box").html("<p>File type not supported!</p>");
-		}
-	};
-
+	$scope.$on('flow::fileAdded', function (event, $flow, flowFile) {
+		var reader = new FileReader();
+		reader.onload = function(event) {
+			$scope.adData.imageDataUrl = event.target.result;
+			$scope.adData.newImage = true;
+		};
+		reader.readAsDataURL(flowFile.file);
+	});
 });

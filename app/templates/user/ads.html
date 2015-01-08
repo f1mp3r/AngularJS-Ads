@@ -26,8 +26,8 @@
 					</div>
 					<div class="col-md-8">
 						<div class="text">{{ad.text}}</div>
-						<div class="text"><strong>Category:</strong> {{ad.categoryName}}</div>
-						<div class="text"><strong>Town:</strong> {{ad.townName}}</div>
+						<div class="text" ng-if="ad.categoryName"><strong>Category:</strong> {{ad.categoryName}}</div>
+						<div class="text" ng-if="ad.townName"><strong>Town:</strong> {{ad.townName}}</div>
 					</div>
 				</div>
 			</div>
