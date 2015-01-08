@@ -1,1 +1,76 @@
-EDit profile
+<div class="row">
+	<div class="col-md-6">
+		<div class="box margin-bottom">
+			<h1 class="text-center">Edit profile</h1>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="name"><span class="pull-right">Name:</span></label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" class="form-control" id="name" ng-model="userData.ownerName" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="email"><span class="pull-right">Email:</span></label>
+				</div>
+				<div class="col-md-8">
+					<input type="email" class="form-control" id="email" ng-model="userData.ownerEmail" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="phone"><span class="pull-right">Phone:</span></label>
+				</div>
+				<div class="col-md-8">
+					<input type="tel" class="form-control" id="phone" ng-model="userData.ownerPhone" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="town"><span class="pull-right">Town:</span></label>
+				</div>
+				<div class="col-md-8">
+					<select id="town" class="form-control" ng-model="userData.townId">
+						<option ng-repeat="t in towns" ng-select="t.id == userData.townId" value="{{t.id}}"></option>
+					</select>
+				</div>
+			</div>
+			<div class="text-center">
+				<button class="btn btn-success btn-lg" ng-click="editProfile(userData)">Edit profile</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="box margin-bottom">
+			<h1 class="text-center">Change password</h1>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="oldpass"><span class="pull-right">Old password:</span></label>
+				</div>
+				<div class="col-md-8">
+					<input type="password" class="form-control" id="oldpass" ng-model="passData.oldPassword" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="newpass"><span class="pull-right">New password:</span></label>
+				</div>
+				<div class="col-md-8">
+					<input type="password" class="form-control" id="newpass" ng-model="passData.ownerEmail" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="confirmpass"><span class="pull-right">Confirm password:</span></label>
+				</div>
+				<div class="col-md-8">
+					<input type="password" class="form-control" id="confirmpass" ng-model="passData.confirmPassword" />
+				</div>
+			</div>
+			<div class="text-center">
+				<button class="btn btn-success btn-lg" ng-click="changePassword(passData)">Change password</button>
+			</div>
+		</div>
+	</div>
+</div>	

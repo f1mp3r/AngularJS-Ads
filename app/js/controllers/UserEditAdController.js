@@ -23,12 +23,12 @@ app.controller('UserEditAdController', function ($scope, $routeParams, $rootScop
 		if (adData.changeImage && !adData.newImage) {
 			adData.imageDataUrl = '';
 		}
-		console.log(adData);
 		userService.editAd(
 			adId,
 			adData,
 			function success(data) {
 				notifyService.showInfo('Your ad was successfully edited');
+				window.location = "#/user/ads";
 			},
 			function error(err) {
 				notifyService.showError('Couldn\'t edit your ad.', err);
@@ -40,7 +40,6 @@ app.controller('UserEditAdController', function ($scope, $routeParams, $rootScop
 		var reader = new FileReader();
 		reader.onload = function(event) {
 			$scope.adData.imageDataUrl = event.target.result;
-			console.log($scope.adData.imageDataUrl);
 			$scope.adData.newImage = true;
 		};
 		reader.readAsDataURL(flowFile.file);
