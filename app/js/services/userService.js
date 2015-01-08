@@ -50,7 +50,7 @@ app.factory('userService',
 				$http(request).success(success).error(error);
 			},
 
-			editUserAd: function(id, adData, success, error) {
+			editAd: function(id, adData, success, error) {
 				var request = {
 					method: 'PUT',
 					url: baseServiceUrl + 'user/ads/' + id,
@@ -60,7 +60,7 @@ app.factory('userService',
 				$http(request).success(success).error(error);
 			},
 
-			deleteUserAd: function (id, success, error) {
+			deleteAd: function (id, success, error) {
 				var request = {
 					method: 'DELETE',
 					url: baseServiceUrl + 'user/ads/' + id,

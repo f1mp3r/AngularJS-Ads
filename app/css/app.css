@@ -190,3 +190,13 @@ ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
     box-sizing: border-box;
     margin-left: 0px !important;
 }
+
+.live-image-preview {
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid rgba(100, 155, 63, 0.51);
+}
+
+.live-image-preview img{
+    width: 100%;
+}

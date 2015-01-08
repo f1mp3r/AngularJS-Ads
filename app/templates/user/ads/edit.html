@@ -1,1 +1,59 @@
-Edit
+<div class="box">
+	<h1 class="text-center">Edit ad</h1>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-4">
+					<label for="title">Title:</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" id="title" class="form-control" ng-model="adData.title" value="adData.title" placeholder="Ad title" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="text">Text:</label>
+				</div>
+				<div class="col-md-8">
+					<textarea id="text" ng-model="adData.text" placeholder="Ad text"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="image">Image:</label>
+				</div>
+				<div class="col-md-8">
+					<input type="file" id="image" ng-model="adData.imageDataUrl" class="form-control" placeholder="Ad image" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="category">Category</label>
+				</div>
+				<div class="col-md-8">
+					<select id="category" ng-model="adData.categoryId">
+						<option ng-repeat="c in categories" value="{{c.id}}" ng-select="c.id == adData.categoryId">{{c.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<label for="town">Town</label>
+				</div>
+				<div class="col-md-8">
+					<select id="town" ng-model="adData.townId">
+						<option ng-repeat="t in towns" value="{{t.id}}" ng-select="t.id == adData.townId">{{t.name}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="text-center">
+				<button class="btn btn-success" ng-click="editAd(adData)">Edit ad</button>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="live-image-preview">
+				<img ng-src="{{adData.imageDataUrl ? adData.imageDataUrl : appData.defaultImage}}" alt="{{adData.title}}" />
+			</div>
+		</div>
+	</div>
+</div>
