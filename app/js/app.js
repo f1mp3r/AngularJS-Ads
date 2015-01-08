@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'ngResource', 'angular-loading-bar', 'ui.bootstrap.pagination']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'angular-loading-bar', 'ui.bootstrap.pagination', 'flow']);
 
 app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api/');
 app.constant('appData', {
@@ -37,6 +37,10 @@ app.config(function ($routeProvider) {
 	$routeProvider.when('/user/ads/delete/:id', {
 		templateUrl: 'templates/user/ads/delete.html',
 		controller: 'UserDeleteAdController'
+	});
+	$routeProvider.when('/user/profile/edit', {
+		templateUrl: 'templates/user/profile/edit.html',
+		controller: 'UserEditProfileController'
 	});
 	$routeProvider.otherwise(
 		{ redirectTo: '/' }

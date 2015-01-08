@@ -11,6 +11,8 @@ app.controller('UserEditAdController', function ($scope, $routeParams, $rootScop
 		adId,
 		function success(data) {
 			$scope.adData = data;
+			$scope.adData.changeImage = false;
+			$scope.adData.newImage = false;
 		},
 		function error(err) {
 			notifyService.showError('Couldn\'t load your ad', err);
@@ -18,6 +20,10 @@ app.controller('UserEditAdController', function ($scope, $routeParams, $rootScop
 	);
 
 	$scope.editAd = function(adData) {
+		if (adData.changeImage && !adData.newImage) {
+			adData.imageDataUrl = '';
+		}
+		console.log(adData);
 		userService.editAd(
 			adId,
 			adData,
@@ -29,4 +35,14 @@ app.controller('UserEditAdController', function ($scope, $routeParams, $rootScop
 			}
 		);
 	}
+
+	$scope.$on('flow::fileAdded', function (event, $flow, flowFile) {
+		var reader = new FileReader();
+		reader.onload = function(event) {
+			$scope.adData.imageDataUrl = event.target.result;
+			console.log($scope.adData.imageDataUrl);
+			$scope.adData.newImage = true;
+		};
+		reader.readAsDataURL(flowFile.file);
+	});
 });

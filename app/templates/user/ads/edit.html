@@ -1,58 +1,66 @@
-<div class="box">
+<div class="box" ng-controller="UserEditAdController" flow-init="{singleFile:true}" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]">
 	<h1 class="text-center">Edit ad</h1>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-8 margin-bottom">
+			<div class="alert alert-info">To change an image, select your image and check the <strong>Change image</strong> option.<br />To delete the current image dont pick a new one and check the <strong>Change image</strong> option.</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<label for="title">Title:</label>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-10">
 					<input type="text" id="title" class="form-control" ng-model="adData.title" value="adData.title" placeholder="Ad title" />
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<label for="text">Text:</label>
 				</div>
-				<div class="col-md-8">
-					<textarea id="text" ng-model="adData.text" placeholder="Ad text"></textarea>
+				<div class="col-md-10">
+					<textarea id="text" class="form-control" ng-model="adData.text" placeholder="Ad text"></textarea>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<label for="image">Image:</label>
 				</div>
-				<div class="col-md-8">
-					<input type="file" id="image" ng-model="adData.imageDataUrl" class="form-control" placeholder="Ad image" />
+				<div class="col-md-10">
+					<div class="input-group">
+						<input type="file" flow-btn id="image" ng-model="adData.newImage" class="form-control" placeholder="Ad image" />
+						<div class="input-group-addon" ng-class="{'red-bg' : adData.newImage && !adData.changeImage}">
+							<input type="checkbox" id="changeImage" ng-model="adData.changeImage" />
+							<label for="changeImage" ng-class="{'text-danger' : adData.newImage && !adData.changeImage}">Change image</label>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<label for="category">Category</label>
 				</div>
-				<div class="col-md-8">
-					<select id="category" ng-model="adData.categoryId">
+				<div class="col-md-10">
+					<select id="category" class="form-control" ng-model="adData.categoryId">
 						<option ng-repeat="c in categories" value="{{c.id}}" ng-select="c.id == adData.categoryId">{{c.name}}</option>
 					</select>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-2">
 					<label for="town">Town</label>
 				</div>
-				<div class="col-md-8">
-					<select id="town" ng-model="adData.townId">
+				<div class="col-md-10">
+					<select id="town" class="form-control" ng-model="adData.townId">
 						<option ng-repeat="t in towns" value="{{t.id}}" ng-select="t.id == adData.townId">{{t.name}}</option>
 					</select>
 				</div>
 			</div>
 			<div class="text-center">
-				<button class="btn btn-success" ng-click="editAd(adData)">Edit ad</button>
+				<button class="btn btn-success btn-lg" ng-click="editAd(adData)">Edit ad</button>
 			</div>
 		</div>
 		<div class="col-md-4">
-			<div class="live-image-preview">
-				<img ng-src="{{adData.imageDataUrl ? adData.imageDataUrl : appData.defaultImage}}" alt="{{adData.title}}" />
+			<div class="thumbnail">
+				<img ng-show="!$flow.files.length" ng-src="{{adData.imageDataUrl ? adData.imageDataUrl : appData.defaultImage}}" alt="{{adData.title}}" />
+				<img ng-show="$flow.files.length" ng-model="adData.imageDataUrl" flow-img="$flow.files[0]" alt="{{adData.title}}" />
 			</div>
 		</div>
 	</div>

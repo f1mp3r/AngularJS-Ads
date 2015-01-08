@@ -200,3 +200,12 @@ ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
 .live-image-preview img{
     width: 100%;
 }
+
+.margin-bottom .row {
+    margin-bottom: 10px;
+}
+
+.red-bg {
+    background: #ffcfcf;
+    border-color: red;
+}
