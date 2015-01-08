@@ -2,6 +2,7 @@
 
 app.controller('LoginController', function ($scope, $location, authService, notifyService) {
 	$scope.pageData.title = 'Login';
+	$scope.pageData.showSidebar = false;
 
 	$scope.login = function(userData) {
 		authService.login(userData,

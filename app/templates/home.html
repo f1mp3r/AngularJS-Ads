@@ -1,22 +1,26 @@
-<ul class="ads">
-	<li ng-repeat="ad in ads.ads" class="box">
-		<h1>{{ad.title}}</h1>
-		<div><strong>Date:</strong> {{ad.date | date:'dd-MMM-yyyy'}}</div>
-		<div ng-if='ad.imageDataUrl'>
-			<strong>Image:</strong>
-			<img class="ad-image" ng-src="{{ad.imageDataUrl}}" />
+<div class="ads">
+	<div ng-repeat="ad in ads.ads" class="box ad">
+		<div class="row">
+			<div class="col-md-10">
+				<h1>{{ad.title}}</h1>
+			</div>
+			<div class="col-md-2">
+				<small>{{ad.date | date: 'dd-MMM-yyyy'}}</small>
+			</div>
 		</div>
-		<div>
-			<strong>Name:</strong> {{ad.ownerName}}
+		<div class="row">
+			<div class="col-md-4">
+				<img class="ad-image" ng-src="{{ad.imageDataUrl ? ad.imageDataUrl : appData.defaultImage}}" />
+			</div>
+			<div class="col-md-8">
+				<div class="text">{{ad.text}}</div>
+				<div class="text"><strong>Owner name:</strong> {{ad.ownerName}}</div>
+				<div class="text"><strong>Owner name:</strong> {{ad.ownerEmail}}</div>
+				<div class="text"><strong>Owner name:</strong> {{ad.ownerPhone}}</div>
+			</div>
 		</div>
-		<div>
-			<strong>Email:</strong> {{ad.ownerEmail}}
-		</div>
-		<div>
-			<strong>Phone:</strong> {{ad.ownerPhone}}
-		</div>
-	</li>
-</ul>
+	</div>
+</div>
 <pagination total-items="ads.numItems" ng-model="adsParams.startPage" items-per-page="adsParams.pageSize" ng-change="reloadAds()" max-size="9" boundary-links="true"></pagination>
 
 

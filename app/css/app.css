@@ -175,6 +175,18 @@ ul.sidebar-menu li a, ul.sidebar-menu li a:focus {
 }
 
 .ad-image {
-    max-width: 150px;
-    max-height: 150px;
+    width: 100%;
+}
+
+.ad .text {
+    padding: 10px;
+    border: 1px dotted rgba(100, 155, 63, 0.51);
+    background-color: #defad5;
+    margin-bottom: 5px;
+}
+
+.full-width, .full-width:active, .full-width:visited {
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0px !important;
 }

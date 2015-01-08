@@ -2,6 +2,7 @@
 
 app.controller('HomeController', function ($scope, $rootScope, adsService, notifyService, appData) {
 	$scope.pageData.title = 'Home';
+	$scope.pageData.showSidebar = true;
 	$scope.adsParams = {
 		'startPage' : 1,
 		'pageSize' : appData.pageSize

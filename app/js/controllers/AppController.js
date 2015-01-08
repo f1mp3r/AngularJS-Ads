@@ -4,7 +4,8 @@ app.controller('AppController', function ($scope, authService, appData, notifySe
 	$scope.appData = appData;
 	$scope.authService = authService;
 	$scope.pageData = {
-		title: 'Home'
+		title: 'Home',
+		showSidebar: false
 	}
 
 	$scope.logout = function() {
@@ -12,5 +13,4 @@ app.controller('AppController', function ($scope, authService, appData, notifySe
 		notifyService.showInfo('You have successfully logged out!');
 		window.location = '#/'
 	};
-	
 });

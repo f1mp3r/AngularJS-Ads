@@ -1,6 +1,8 @@
 'use strict';
 
 app.controller('UserPublishNewAdController', function ($scope, $location, townsService, categoriesService, userService, notifyService) {
+	$scope.pageData.title = 'Publish your ad';
+	$scope.pageData.showSidebar = false;
 	$scope.adData = {
 		townId: null,
 		categoryId: null

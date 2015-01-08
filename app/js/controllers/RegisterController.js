@@ -2,6 +2,7 @@
 
 app.controller('RegisterController', function ($scope, $location, authService, notifyService, townsService) {
 	$scope.pageData.title = 'Register';
+	$scope.pageData.showSidebar = false;
 
 	$scope.userData = {townId: null};
 	$scope.towns = townsService.getTowns();
