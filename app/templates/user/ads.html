@@ -1,4 +1,14 @@
 <div class="ads">
+	<div class="box">
+		Filter ads by status:&nbsp;&nbsp;
+		<div class="btn-group" role="group">
+			<button type="button" ng-click="statusChanged(null);" ng-class="{'active' : statusChangedName == null}" class="btn btn-default">All</button>
+			<button type="button" ng-click="statusChanged('inactive');" ng-class="{'active' : statusChangedName == 'inactive'}" class="btn btn-default">Inactive</button>
+			<button type="button" ng-click="statusChanged('waitingApproval');" ng-class="{'active' : statusChangedName == 'waitingApproval'}" class="btn btn-default">Waiting approval</button>
+			<button type="button" ng-click="statusChanged('published');" ng-class="{'active' : statusChangedName == 'published'}" class="btn btn-default">Published</button>
+			<button type="button" ng-click="statusChanged('rejected');" ng-class="{'active' : statusChangedName == 'rejected'}" class="btn btn-default">Rejected</button>
+		</div>
+	</div>
 	<div ng-repeat="ad in ads.ads" class="box ad">
 		<div class="row">
 			<div class="col-md-10">

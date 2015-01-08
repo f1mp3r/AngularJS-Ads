@@ -2,7 +2,7 @@
 
 app.controller('UserAdsController', function ($scope, $rootScope, userService, notifyService, appData) {
 	$scope.pageData.title = 'My ads';
-	$scope.pageData.showSidebar = true;
+	$scope.pageData.showSidebar = false;
 	$scope.adsParams = {
 		'startPage' : 1,
 		'pageSize' : appData.pageSize
@@ -19,19 +19,15 @@ app.controller('UserAdsController', function ($scope, $rootScope, userService, n
 			}
 		);
 	};
+
 	$scope.reloadAds();
 
-	$scope.$on('categorySelectionChanged', function(event, selectedCategoryId) {
-		$scope.adsParams.categoryId = selectedCategoryId;
+	$scope.statusChanged = function(statusChangedName) {
+		$scope.statusChangedName = statusChangedName;
+		$scope.adsParams.status = statusChangedName;
 		$scope.adsParams.startPage = 1;
 		$scope.reloadAds();
-	});
-
-	$scope.$on('townSelectionChanged', function(event, selectedTownId) {
-		$scope.adsParams.townId = selectedTownId;
-		$scope.adsParams.startPage = 1;
-		$scope.reloadAds();
-	});
+	};
 
 	$scope.deactivateAd = function(id) {
 		userService.deactivateAd(
