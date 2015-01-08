@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserEditProfileController', function ($scope, $routeParams, $rootScope, townsService, userService, notifyService) {
+app.controller('UserEditProfileController', function ($scope, $location, $rootScope, townsService, userService, notifyService) {
 	$scope.pageData.title = 'Edit profile / change password';
 	$scope.pageData.showSidebar = false;
 	$scope.towns = townsService.getTowns();
@@ -20,7 +20,7 @@ app.controller('UserEditProfileController', function ($scope, $routeParams, $roo
 			userData,
 			function success(data) {
 				notifyService.showInfo('You have changed your profile data successfully!');
-				window.location = '#/user/ads';
+				$location.path('/user/ads');
 			},
 			function error(err) {
 				notifyService.showError('An error occured while changing your data!', err);
@@ -33,7 +33,7 @@ app.controller('UserEditProfileController', function ($scope, $routeParams, $roo
 			passData,
 			function success(data) {
 				notifyService.showInfo('You have changed your password successfully!');
-				window.location = '#/user/ads';
+				$location.path('/user/ads');
 			},
 			function error(err) {
 				notifyService.showError('An error occured while changing password!', err);

@@ -1,1 +1,27 @@
-DELETE
+<div class="box ad">
+	<h1 class="text-center">Confirm deleting ad</h1>
+	<div class="row">
+		<div class="col-md-10">
+			<h1>{{ad.title}}</h1>
+		</div>
+		<div class="col-md-2">
+			<strong>{{ad.date | date: 'dd-MMM-yyyy'}}</strong>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<img ng-src="{{ad.imageDataUrl ? ad.imageDataUrl : appData.defaultImage}}" alt="{{ad.title}}" />
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="text">{{ad.text}}</div>
+			<div class="text">Category: {{ad.categoryName}}</div>
+			<div class="text">Town: {{ad.townName}}</div>
+		</div>
+	</div>
+	<div class="text-center">
+		<button class="btn btn-danger" ng-click="delete(ad.id)">Delete ad</button>
+		<a class="btn btn-default" href="#/user/ads">Cancel</a>
+	</div>
+</div>

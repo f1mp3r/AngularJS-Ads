@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('UserEditAdController', function ($scope, $routeParams, $rootScope, townsService, categoriesService, userService, notifyService) {
+app.controller('UserEditAdController', function ($scope, $location, $routeParams, $rootScope, townsService, categoriesService, userService, notifyService) {
 	$scope.pageData.title = 'Edit ad';
 	$scope.pageData.showSidebar = false;
 	var adId = $routeParams.id;
@@ -28,7 +28,7 @@ app.controller('UserEditAdController', function ($scope, $routeParams, $rootScop
 			adData,
 			function success(data) {
 				notifyService.showInfo('Your ad was successfully edited');
-				window.location = "#/user/ads";
+				$location.path('/user/ads');
 			},
 			function error(err) {
 				notifyService.showError('Couldn\'t edit your ad.', err);

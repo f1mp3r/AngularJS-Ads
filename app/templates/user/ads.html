@@ -1,5 +1,5 @@
 <div class="ads">
-	<div class="box">
+	<div class="box" ng-if="ads.ads.length > 0">
 		Filter ads by status:&nbsp;&nbsp;
 		<div class="btn-group" role="group">
 			<button type="button" ng-click="statusChanged(null);" ng-class="{'active' : statusChangedName == null}" class="btn btn-default">All</button>
@@ -42,7 +42,7 @@
 		</div>
 	</div>
 </div>
-<pagination total-items="ads.numItems" ng-model="adsParams.startPage" items-per-page="adsParams.pageSize" ng-change="reloadAds()" max-size="9" boundary-links="true"></pagination>
+<pagination ng-if="ads.ads.length > 0" total-items="ads.numItems" ng-model="adsParams.startPage" items-per-page="adsParams.pageSize" ng-change="reloadAds()" max-size="9" boundary-links="true"></pagination>
 
 
 <div ng-if="ads.ads.length==0" class="box no-data">

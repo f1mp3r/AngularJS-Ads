@@ -1,76 +1,81 @@
 <div class="row">
 	<div class="col-md-6">
-		<div class="box margin-bottom">
-			<h1 class="text-center">Edit profile</h1>
-			<div class="row">
-				<div class="col-md-4">
-					<label for="name"><span class="pull-right">Name:</span></label>
+		<form name="edit" ng-submit="editProfile(userData)">
+			<div class="box margin-bottom">
+				<h1 class="text-center">Edit profile</h1>
+				<div class="row">
+					<div class="col-md-4">
+						<label for="name"><span class="pull-right">Name:</span></label>
+					</div>
+					<div class="col-md-8">
+						<input type="text" class="form-control" name="name" required="" ng-class="{'has-error' : edit.name.$error.required}" id="name" ng-model="userData.name" />
+					</div>
 				</div>
-				<div class="col-md-8">
-					<input type="text" class="form-control" id="name" ng-model="userData.name" />
+				<div class="row">
+					<div class="col-md-4">
+						<label for="email"><span class="pull-right">Email:</span></label>
+					</div>
+					<div class="col-md-8">
+						<input type="email" class="form-control" id="email" name="email" required="" ng-class="{'has-error' : edit.email.$error.required && edit.email.$error.email}" ng-model="userData.email" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<label for="phone"><span class="pull-right">Phone:</span></label>
+					</div>
+					<div class="col-md-8">
+						<input type="tel" class="form-control" id="phone" name="phone" required="" ng-class="{'has-error' : edit.phone.$error.required}" ng-model="userData.phoneNumber" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<label for="town"><span class="pull-right">Town:</span></label>
+					</div>
+					<div class="col-md-8">
+						<select id="town" class="form-control" ng-model="userData.townId">
+							<option>(none)</option>
+							<option ng-repeat="t in towns" ng-select="t.id == userData.townId" value="{{t.id}}">{{t.name}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="text-center">
+					<button class="btn btn-success btn-lg">Edit profile</button>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<label for="email"><span class="pull-right">Email:</span></label>
-				</div>
-				<div class="col-md-8">
-					<input type="email" class="form-control" id="email" ng-model="userData.email" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<label for="phone"><span class="pull-right">Phone:</span></label>
-				</div>
-				<div class="col-md-8">
-					<input type="tel" class="form-control" id="phone" ng-model="userData.phoneNumber" />
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<label for="town"><span class="pull-right">Town:</span></label>
-				</div>
-				<div class="col-md-8">
-					<select id="town" class="form-control" ng-model="userData.townId">
-						<option ng-repeat="t in towns" ng-select="t.id == userData.townId" value="{{t.id}}">{{t.name}}</option>
-					</select>
-				</div>
-			</div>
-			<div class="text-center">
-				<button class="btn btn-success btn-lg" ng-click="editProfile(userData)">Edit profile</button>
-			</div>
-		</div>
+		</form>
 	</div>
 	<div class="col-md-6">
 		<div class="box margin-bottom">
-			<h1 class="text-center">Change password</h1>
-			<div class="row">
-				<div class="col-md-4">
-					<label for="oldpass"><span class="pull-right">Old password:</span></label>
+			<form name="editpass" ng-submit="changePassword(passData)">
+				<h1 class="text-center">Change password</h1>
+				<div class="row">
+					<div class="col-md-4">
+						<label for="oldpass"><span class="pull-right">Old password:</span></label>
+					</div>
+					<div class="col-md-8">
+						<input type="password" class="form-control" required="" name="oldpass" ng-class="{'has-error' : editpass.$submitted && editpass.oldpass.$error.required}" id="oldpass" ng-model="passData.oldPassword" />
+					</div>
 				</div>
-				<div class="col-md-8">
-					<input type="password" class="form-control" id="oldpass" ng-model="passData.oldPassword" />
+				<div class="row">
+					<div class="col-md-4">
+						<label for="newpass"><span class="pull-right">New password:</span></label>
+					</div>
+					<div class="col-md-8">
+						<input type="password" class="form-control" required="" name="newpass" ng-class="{'has-error' : editpass.$submitted && editpass.newpass.$error.required}" id="newpass" ng-model="passData.newPassword" />
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<label for="newpass"><span class="pull-right">New password:</span></label>
+				<div class="row">
+					<div class="col-md-4">
+						<label for="confirmpass"><span class="pull-right">Confirm password:</span></label>
+					</div>
+					<div class="col-md-8">
+						<input type="password" class="form-control" required="" name="confirmpass" ng-class="{'has-error' : editpass.$submitted && editpass.confirmpass.$error.required}" id="confirmpass" ng-model="passData.confirmPassword" />
+					</div>
 				</div>
-				<div class="col-md-8">
-					<input type="password" class="form-control" id="newpass" ng-model="passData.newPassword" />
+				<div class="text-center">
+					<button class="btn btn-success btn-lg">Change password</button>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<label for="confirmpass"><span class="pull-right">Confirm password:</span></label>
-				</div>
-				<div class="col-md-8">
-					<input type="password" class="form-control" id="confirmpass" ng-model="passData.confirmPassword" />
-				</div>
-			</div>
-			<div class="text-center">
-				<button class="btn btn-success btn-lg" ng-click="changePassword(passData)">Change password</button>
-			</div>
+			</form>
 		</div>
 	</div>
 </div>	
