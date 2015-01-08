@@ -69,11 +69,12 @@ app.factory('userService',
 				$http(request).success(success).error(error);
 			},
 
-			changeUserPassword: function (success, error) {
+			changeUserPassword: function (passwordData, success, error) {
 				var request = {
-					method: 'DELETE',
+					method: 'PUT',
 					url: baseServiceUrl + 'user/changePassword',
 					headers: authService.getAuthHeaders(),
+					params: passwordData
 				};
 				$http(request).success(success).error(error);
 			},

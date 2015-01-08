@@ -7,7 +7,7 @@
 					<label for="name"><span class="pull-right">Name:</span></label>
 				</div>
 				<div class="col-md-8">
-					<input type="text" class="form-control" id="name" ng-model="userData.ownerName" />
+					<input type="text" class="form-control" id="name" ng-model="userData.name" />
 				</div>
 			</div>
 			<div class="row">
@@ -15,7 +15,7 @@
 					<label for="email"><span class="pull-right">Email:</span></label>
 				</div>
 				<div class="col-md-8">
-					<input type="email" class="form-control" id="email" ng-model="userData.ownerEmail" />
+					<input type="email" class="form-control" id="email" ng-model="userData.email" />
 				</div>
 			</div>
 			<div class="row">
@@ -23,7 +23,7 @@
 					<label for="phone"><span class="pull-right">Phone:</span></label>
 				</div>
 				<div class="col-md-8">
-					<input type="tel" class="form-control" id="phone" ng-model="userData.ownerPhone" />
+					<input type="tel" class="form-control" id="phone" ng-model="userData.phoneNumber" />
 				</div>
 			</div>
 			<div class="row">
@@ -32,7 +32,7 @@
 				</div>
 				<div class="col-md-8">
 					<select id="town" class="form-control" ng-model="userData.townId">
-						<option ng-repeat="t in towns" ng-select="t.id == userData.townId" value="{{t.id}}"></option>
+						<option ng-repeat="t in towns" ng-select="t.id == userData.townId" value="{{t.id}}">{{t.name}}</option>
 					</select>
 				</div>
 			</div>
