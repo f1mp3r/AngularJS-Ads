@@ -1,41 +1,51 @@
-'use strict'
+'use strict';
 
-var adsModule = angular.module('adsModule', ['ngRoute', 'ngSanitize']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'angular-loading-bar', 'ui.bootstrap.pagination']);
 
-adsModule.constant('constants', {
-	baseUrl: 'http://softuni-ads.azurewebsites.net/api/',
-	defaultPageSize: 5,
-	defaultStartPage: 1,
-	defaultImage: 'images/no-photo.png',
+app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api/');
+app.constant('appData', {
+	pageSize: 5,
+	appName: 'AdSystem'
 });
 
-adsModule.value('authHeaders', {});
+app.config(function ($routeProvider) {
+	$routeProvider.when('/', {
+		templateUrl: 'templates/home.html',
+		controller: 'HomeController'
+	});
+	$routeProvider.when('/login', {
+		templateUrl: 'templates/login.html',
+		controller: 'LoginController'
+	});
+	$routeProvider.when('/register', {
+		templateUrl: 'templates/register.html',
+		controller: 'RegisterController'
+	});
+	$routeProvider.when('/user/ads', {
+		templateUrl: 'templates/user/ads.html',
+		controller: 'UserAdsController'
+	});
+	$routeProvider.when('/user/ads/publish', {
+		templateUrl: 'templates/user/ads/publish.html',
+		controller: 'UserPublishNewAdController'
+	});
+	$routeProvider.when('/user/ads/edit/:id', {
+		templateUrl: 'templates/user/ads/edit.html',
+		controller: 'UserEditAddController'
+	});
+	$routeProvider.when('/user/ads/delete/:id', {
+		templateUrl: 'templates/user/ads/delete.html',
+		controller: 'UserDeleteAddController'
+	});
+	$routeProvider.otherwise(
+		{ redirectTo: '/' }
+	);
+});
 
-adsModule.config(['$routeProvider',
-	function ($routeProvider) {
-		$routeProvider.
-			when('/', {
-				templateUrl: 'templates/ads.html',
-				controller: 'MainAdsController'
-			}).
-			when('/login', {
-				templateUrl: 'templates/login.html',
-				controller: 'LoginController'
-			}).
-			when('/logout', {
-				templateUrl: 'templates/logout.html',
-				controller: 'LogoutController'
-			}).
-			when('/register', {
-				templateUrl: 'templates/registration-form.html',
-				controller: 'RegistrationController'
-			}).
-			when('/user/home', {
-				templateUrl: 'templates/user/home.html',
-				controller: 'UserHomeController'
-			}).
-			otherwise({
-				redirectTo: '/'
-			});
-	}
-]);
+app.run(function ($rootScope, $location, authService) {
+	$rootScope.$on('$locationChangeStart', function (event) {
+		if ($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()) {
+			$location.path("/");
+		}
+	});
+});

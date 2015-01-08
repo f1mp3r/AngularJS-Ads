@@ -1,6 +1,7 @@
-$(document).ready(function() {
-	$('.bs, select').selectpicker({
-        style: 'btn-default',
-        size: 4
-    });
+$(function() {
+	$('#mainMenu li').click(function() {
+		alert('click');
+		$('#mainMenu li').removeClass('special');
+		$(this).addClass('special');
+	});
 });

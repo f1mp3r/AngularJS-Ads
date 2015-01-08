@@ -1,0 +1,17 @@
+{{appData.appName}} - {{pageData.title}}
+<span class="user-area" ng-if="authService.isLoggedIn()">
+	<span>{{authService.getCurrentUser().username}}</span>
+	<a href="javascript:;" ng-click="logout();">Logout</a>
+</span>
+<!--
+
+TODO: 
+
+1) Implement logic to show different app header for:
+	- anonymous site visitors
+	- logged in users
+	- logged in administrators
+
+2) Implement logic to show different title for different screens
+	
+-->
