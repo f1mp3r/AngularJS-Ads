@@ -20,17 +20,7 @@
 		<li><a href="#/user/ads">My Ads</a></li>
 		<li><a href="#/user/ads/publish">Publish new ad</a></li>
 		<li><a href="#/user/profile/edit">Edit profile</a></li>
+		<li class="admin-bg" ng-if="authService.isAdmin()"><a href="#/admin/home">Administration</a></li>
 		<li><a ng-click="logout()">Logout</a></li>
-	</ul>
-</div>
-
-<div ng-if="authService.isAdmin()" class="box admin-bg">
-	<h2>Ads</h2>
-	<ul class="sidebar-menu">
-		<li><a href="javascript:;">All</a></li>
-		<li><a href="javascript:;">Published</a></li>
-		<li><a href="javascript:;">Waiting Approval</a></li>
-		<li><a href="javascript:;">Inactive</a></li>
-		<li><a href="javascript:;">Rejected</a></li>
 	</ul>
 </div>

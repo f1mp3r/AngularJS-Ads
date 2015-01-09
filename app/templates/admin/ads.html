@@ -1,0 +1,72 @@
+<div class="ads">
+	<div class="box">
+		Filter ads by status:&nbsp;&nbsp;
+		<div class="btn-group" role="group">
+			<button type="button" ng-click="statusChanged(null);" ng-class="{'active' : statusChangedName == null}" class="btn btn-default">All</button>
+			<button type="button" ng-click="statusChanged('inactive');" ng-class="{'active' : statusChangedName == 'inactive'}" class="btn btn-default">Inactive</button>
+			<button type="button" ng-click="statusChanged('waitingApproval');" ng-class="{'active' : statusChangedName == 'waitingApproval'}" class="btn btn-default">Waiting approval</button>
+			<button type="button" ng-click="statusChanged('published');" ng-class="{'active' : statusChangedName == 'published'}" class="btn btn-default">Published</button>
+			<button type="button" ng-click="statusChanged('rejected');" ng-class="{'active' : statusChangedName == 'rejected'}" class="btn btn-default">Rejected</button>
+		</div>
+	</div>
+	<div class="box" ng-if="ads.ads.length">
+		<div class="input-group">
+			<span class="input-group-addon" id="sortAds">Sort ads by:</span>
+			<select class="form-control" ng-model="adsParams.sortBy" ng-change="sortingChanged();" aria-describedby="sortAds">
+				<option value=''>Default</option>
+				<optgroup label="By ad specification">
+					<option value="Title">Title Ascending (a-z)</option>
+					<option value="-Title">Title Descending (z-a)</option>
+					<option value="Text">Text Ascending (a-z)</option>
+					<option value="-Text">Text Descending (z-a)</option>
+					<option value="Date">Date Ascending (a-z)</option>
+					<option value="-Date">Date Descending (z-a)</option>
+				</optgroup>
+				<optgroup label="By owner specification">
+					<option value="Owner.Name">Owner name Ascending (a-z)</option>
+					<option value="-Owner.Name">Owner name Descending (z-a)</option>
+					<option value="Owner.Email">Owner email Ascending (a-z)</option>
+					<option value="-Owner.Email">Owner email Descending (z-a)</option>
+				</optgroup>
+			</select>
+		</div>
+	</div>
+	<div ng-repeat="ad in ads.ads" class="box ad">
+		<div class="row">
+			<div class="col-md-10">
+				<h1>{{ad.title}}</h1>
+			</div>
+			<div class="col-md-2">
+				<strong>{{ad.date | date: 'dd-MMM-yyyy'}}</strong>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4 text-center">
+				<img class="ad-image" ng-src="{{ad.imageDataUrl ? ad.imageDataUrl : appData.defaultImage}}" />
+				<strong style="font-size: 18px;">Status:</strong>
+				<div class="text">{{ad.status}}</div>
+			</div>
+			<div class="col-md-8">
+				<div class="text">{{ad.text}}</div>
+				<div class="text"><strong>Username:</strong> {{ad.ownerUsername}}</div>
+				<div class="text"><strong>Name:</strong> {{ad.ownerName}}</div>
+				<div class="text"><strong>Email:</strong> {{ad.ownerEmail}}</div>
+				<div class="text"><strong>Tel.:</strong> {{ad.ownerPhone}}</div>
+				<div class="text" ng-if="ad.categoryName"><strong>Category:</strong> {{ad.categoryName}}</div>
+				<div class="text" ng-if="ad.townName"><strong>Town:</strong> {{ad.townName}}</div>
+			</div>
+		</div>
+		<div class="btn-group btn-group-lg btn-group-justified" role="group">
+			<a href="javascript:;" class="btn btn-success" ng-click="approveAd(ad.id);">Approve</a>
+			<a href="javascript:;" class="btn btn-warning" ng-click="rejectAd(ad.id);">Reject</a>
+			<a href="#/user/ads/edit/{{ad.id}}" class="btn btn-primary">Edit</a>
+			<a href="#/user/ads/delete/{{ad.id}}" class="btn btn-danger">Delete</a>
+		</div>
+	</div>
+</div>
+<pagination ng-if="ads.ads.length > 0" total-items="ads.numItems" ng-model="adsParams.startPage" items-per-page="adsParams.pageSize" ng-change="reloadAds()" max-size="9" boundary-links="true"></pagination>
+
+
+<div ng-if="ads.ads.length==0" class="box no-data">
+	No ads found.
+</div>

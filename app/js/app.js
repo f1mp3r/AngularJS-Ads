@@ -42,6 +42,22 @@ app.config(function ($routeProvider) {
 		templateUrl: 'templates/user/profile/edit.html',
 		controller: 'UserEditProfileController'
 	});
+
+	// Administration part below
+
+	$routeProvider.when('/admin/home', {
+		templateUrl: 'templates/admin/ads.html',
+		controller: 'AdminHomeController'
+	});
+	$routeProvider.when('/admin/ads/edit/:id', {
+		templateUrl: 'templates/admin/ads/edit.html',
+		controller: 'AdminEditAdController'
+	});
+	$routeProvider.when('/admin/ads/delete/:id', {
+		templateUrl: 'templates/admin/ads/delete.html',
+		controller: 'AdminDeleteAdController'
+	});
+
 	$routeProvider.otherwise(
 		{ redirectTo: '/' }
 	);
@@ -50,6 +66,14 @@ app.config(function ($routeProvider) {
 app.run(function ($rootScope, $location, authService) {
 	$rootScope.$on('$locationChangeStart', function (event) {
 		if ($location.path().indexOf("/user/") != -1 && !authService.isLoggedIn()) {
+			$location.path("/");
+		}
+	});
+});
+
+app.run(function ($rootScope, $location, authService) {
+	$rootScope.$on('$locationChangeStart', function (event) {
+		if ($location.path().indexOf("/admin/") != -1 && !authService.isAdmin()) {
 			$location.path("/");
 		}
 	});
