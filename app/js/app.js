@@ -58,6 +58,18 @@ app.config(function ($routeProvider) {
 		templateUrl: 'templates/admin/ads/delete.html',
 		controller: 'AdminDeleteAdController'
 	});
+	$routeProvider.when('/admin/users', {
+		templateUrl: 'templates/admin/users.html',
+		controller: 'AdminListUsersController'
+	});
+	$routeProvider.when('/admin/towns', {
+		templateUrl: 'templates/admin/towns.html',
+		controller: 'AdminListTownsController'
+	});
+	$routeProvider.when('/admin/categories', {
+		templateUrl: 'templates/admin/categories.html',
+		controller: 'AdminListCategoriesController'
+	});
 
 	$routeProvider.otherwise(
 		{ redirectTo: '/' }

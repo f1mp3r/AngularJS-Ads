@@ -1,0 +1,33 @@
+<div class="box">
+	<h1 class="text-center">Categories</h1>
+	<div class="input-group">
+		<span class="input-group-addon" id="sortCategories">Sort categories by:</span>
+		<select class="form-control" ng-model="categoryParams.sortBy" ng-change="sortingChanged();" aria-describedby="sortCategories">
+			<option value=''>Default</option>
+			<optgroup label="By category specification">
+				<option value="Name">Name Ascending (a-z)</option>
+				<option value="-Name">Name Descending (z-a)</option>
+			</optgroup>
+		</select>
+	</div>
+	<table class="table table-bordered table-striped table-hover text-center">
+		<thead>
+			<tr class="info" style="font-weight:bold;">
+				<td>Category id</td>
+				<td>Category name</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tr ng-repeat="category in categories.categories">
+			<td>{{category.id}}</td>
+			<td>{{category.username}}</td>
+			<td class="warning"><a href="admin/category/edit/{{category.id}}">Edit</a> | <a href="admin/category/delete/{{category.id}}">Delete</a></td>
+		</tr>
+	</table>
+</div>
+<pagination ng-if="categories.categories.length > 0" total-items="categories.numItems" ng-model="categoryParams.startPage" items-per-page="categoryParams.pageSize" ng-change="reloadCategories()" max-size="9" boundary-links="true"></pagination>
+
+
+<div ng-if="categories.categories.length == 0" class="box no-data">
+	No categories found.
+</div>

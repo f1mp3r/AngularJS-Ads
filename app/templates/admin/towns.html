@@ -1,0 +1,33 @@
+<div class="box">
+	<h1 class="text-center">Towns</h1>
+	<div class="input-group">
+		<span class="input-group-addon" id="sortTowns">Sort towns by:</span>
+		<select class="form-control" ng-model="townParams.sortBy" ng-change="sortingChanged();" aria-describedby="sortTowns">
+			<option value=''>Default</option>
+			<optgroup label="By town specification">
+				<option value="Name">Name Ascending (a-z)</option>
+				<option value="-Name">Name Descending (z-a)</option>
+			</optgroup>
+		</select>
+	</div>
+	<table class="table table-bordered table-striped table-hover text-center">
+		<thead>
+			<tr class="info" style="font-weight:bold;">
+				<td>Town id</td>
+				<td>Town name</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tr ng-repeat="town in towns.towns">
+			<td>{{town.id}}</td>
+			<td>{{town.username}}</td>
+			<td class="warning"><a href="admin/town/edit/{{town.id}}">Edit</a> | <a href="admin/town/delete/{{town.id}}">Delete</a></td>
+		</tr>
+	</table>
+</div>
+<pagination ng-if="towns.towns.length > 0" total-items="towns.numItems" ng-model="townParams.startPage" items-per-page="townParams.pageSize" ng-change="reloadTowns()" max-size="9" boundary-links="true"></pagination>
+
+
+<div ng-if="towns.towns.length == 0" class="box no-data">
+	No towns found.
+</div>

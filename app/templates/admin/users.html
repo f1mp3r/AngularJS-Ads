@@ -1,0 +1,43 @@
+<div class="box">
+	<h1 class="text-center">Users</h1>
+	<div class="input-group">
+		<span class="input-group-addon" id="sortAds">Sort users by:</span>
+		<select class="form-control" ng-model="userParams.sortBy" ng-change="sortingChanged();" aria-describedby="sortUsers">
+			<option value=''>Default</option>
+			<optgroup label="By user specification">
+				<option value="UserName">Username Ascending (a-z)</option>
+				<option value="-UserName">Username Descending (z-a)</option>
+				<option value="Name">Name Ascending (a-z)</option>
+				<option value="-Name">Name Descending (z-a)</option>
+			</optgroup>
+			<optgroup label="By town specification">
+				<option value="Town.Name">Town name Ascending (a-z)</option>
+				<option value="-Town.Name">Town name Descending (z-a)</option>
+			</optgroup>
+		</select>
+	</div>
+	<table class="table table-bordered table-striped table-hover text-center">
+		<thead>
+			<tr class="info" style="font-weight:bold;">
+				<td>Username</td>
+				<td>Name</td>
+				<td>Email</td>
+				<td>Phone</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tr ng-repeat="user in users.users">
+			<td>{{user.username}}</td>
+			<td>{{user.name}}</td>
+			<td>{{user.email}}</td>
+			<td>{{user.phoneNumber}}</td>
+			<td class="warning"><a href="admin/user/edit/{{user.id}}">Edit</a> | <a href="admin/user/delete/{{user.id}}">Delete</a></td>
+		</tr>
+	</table>
+</div>
+<pagination ng-if="users.users.length > 0" total-items="users.numItems" ng-model="userParams.startPage" items-per-page="userParams.pageSize" ng-change="reloadUsers()" max-size="9" boundary-links="true"></pagination>
+
+
+<div ng-if="users.users.length == 0" class="box no-data">
+	No users found.
+</div>

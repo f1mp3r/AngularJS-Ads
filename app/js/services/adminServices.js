@@ -13,6 +13,36 @@ app.factory('adminService',
 				$http(request).success(success).error(error);
 			},
 
+			getUsers: function (params, success, error) {
+				var request = {
+					method: 'GET',
+					url: baseServiceUrl + 'admin/users',
+					headers: authService.getAuthHeaders(),
+					params: params
+				};
+				$http(request).success(success).error(error);
+			},
+
+			getTowns: function (params, success, error) {
+				var request = {
+					method: 'GET',
+					url: baseServiceUrl + 'admin/towns',
+					headers: authService.getAuthHeaders(),
+					params: params
+				};
+				$http(request).success(success).error(error);
+			},
+
+			getCategories: function (params, success, error) {
+				var request = {
+					method: 'GET',
+					url: baseServiceUrl + 'admin/categories',
+					headers: authService.getAuthHeaders(),
+					params: params
+				};
+				$http(request).success(success).error(error);
+			},
+
 			rejectAd: function (id, success, error) {
 				var request = {
 					method: 'PUT',
