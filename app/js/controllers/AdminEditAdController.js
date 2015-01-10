@@ -6,12 +6,6 @@ app.controller('AdminEditAdController', function ($scope, $location, $routeParam
 	var adId = $routeParams.id;
 	$scope.towns = townsService.getTowns();
 	$scope.categories = categoriesService.getCategories();
-	$scope.dateOptions = {
-		format: 'dd.mmm.yyyy',
-		onSet: function(context) {
-			$scope.adData.date = new Date(context.select).toISOString();
-		}
-	}
 
 	adminService.getAdById(
 		adId,
