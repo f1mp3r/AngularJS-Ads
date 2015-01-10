@@ -77,8 +77,7 @@
 						<label for="date">Date</label>
 					</div>
 					<div class="col-md-10">
-						<input type="text" pick-a-date="date" placeholder="Pick a date" ng-model="adData.date" data-value="{{adData.dateFormated}}" pick-a-date-options="dateOptions" />
-						<!-- <input type="date" id="date" ng-model="adData.date" /> -->
+						<input type="date" ng-model="adData.date" ng-required="required" />
 					</div>
 				</div>
 				<div class="text-center">

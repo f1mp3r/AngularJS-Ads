@@ -9,23 +9,17 @@ app.controller('AdminEditAdController', function ($scope, $location, $routeParam
 	$scope.dateOptions = {
 		format: 'dd.mmm.yyyy',
 		onSet: function(context) {
-			// console.log('date changed');
-			$scope.adData.dateChanged = true;
+			$scope.adData.date = new Date(context.select).toISOString();
 		}
 	}
 
 	adminService.getAdById(
 		adId,
 		function success(data) {
-			var parsedDate = new Date(Date.parse(data.date));
-			parsedDate = parsedDate.getDate() + '.' + parsedDate.getMonth() + '.' + parsedDate.getFullYear();
-			data.dateFormatted = parsedDate;
 			$scope.adData = data;
-			$scope.adData.dateChanged = false;
-			// $scope.adDate.dateFormatted = parsedDate;
+			$scope.adData.date = new Date($scope.adData.date);
 			$scope.adData.changeImage = false;
 			$scope.adData.newImage = false;
-			// console.log($scope.adData);
 		},
 		function error(err) {
 			notifyService.showError('Couldn\'t load your ad', err);
@@ -36,10 +30,7 @@ app.controller('AdminEditAdController', function ($scope, $location, $routeParam
 		if (adData.changeImage && !adData.newImage) {
 			adData.imageDataUrl = '';
 		}
-		if (adData.dateChanged) {
-			adData.date = adData.date.toISOString();
-		}
-		console.log(adData.date);
+		console.log(adData);
 		adminService.editAd(
 			adId,
 			adData,

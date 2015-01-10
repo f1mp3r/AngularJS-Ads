@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute', 'ngResource', 'angular-loading-bar', 'angular-datepicker', 'ui.bootstrap.pagination', 'flow']);
+var app = angular.module('app', ['ngRoute', 'ngResource', 'angular-loading-bar', 'ui.bootstrap.pagination', 'flow']);
 
 app.constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api/');
 app.constant('appData', {
