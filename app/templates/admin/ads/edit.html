@@ -56,6 +56,14 @@
 				</div>
 				<div class="row">
 					<div class="col-md-2">
+						<label for="ownerUsername"><span class="text-danger">*</span> Owner user:</label>
+					</div>
+					<div class="col-md-10">
+						<input type="text" id="ownerUsername" class="form-control" name="title" ng-model="adData.ownerUsername" value="adData.ownerUsername" required="" placeholder="Owner username" ng-class="{'has-error' : edit.$submitted && edit.ownerUsername.$error.required}" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
 						<label for="status">Status</label>
 					</div>
 					<div class="col-md-10">

@@ -9,8 +9,7 @@ app.controller('AdminEditAdController', function ($scope, $location, $routeParam
 	$scope.dateOptions = {
 		format: 'dd.mmm.yyyy',
 		onSet: function(context) {
-			console.log('date changed');
-			console.log(adData.date);
+			// console.log('date changed');
 			$scope.adData.dateChanged = true;
 		}
 	}
@@ -21,13 +20,12 @@ app.controller('AdminEditAdController', function ($scope, $location, $routeParam
 			var parsedDate = new Date(Date.parse(data.date));
 			parsedDate = parsedDate.getDate() + '.' + parsedDate.getMonth() + '.' + parsedDate.getFullYear();
 			data.dateFormatted = parsedDate;
-			console.log(data);
 			$scope.adData = data;
 			$scope.adData.dateChanged = false;
 			// $scope.adDate.dateFormatted = parsedDate;
 			$scope.adData.changeImage = false;
 			$scope.adData.newImage = false;
-			console.log($scope.adData);
+			// console.log($scope.adData);
 		},
 		function error(err) {
 			notifyService.showError('Couldn\'t load your ad', err);

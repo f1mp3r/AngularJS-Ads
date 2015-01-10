@@ -16,6 +16,7 @@ app.controller('UserEditProfileController', function ($scope, $location, $rootSc
 	);
 
 	$scope.editProfile = function(userData) {
+		console.log(userData);
 		userService.editUserProfile(
 			userData,
 			function success(data) {
@@ -29,6 +30,7 @@ app.controller('UserEditProfileController', function ($scope, $location, $rootSc
 	}
 
 	$scope.changePassword = function(passData) {
+		console.log(passData);
 		userService.changeUserPassword(
 			passData,
 			function success(data) {

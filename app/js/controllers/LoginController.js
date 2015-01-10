@@ -8,7 +8,11 @@ app.controller('LoginController', function ($scope, $location, authService, noti
 		authService.login(userData,
 			function success() {
 				notifyService.showInfo('Login successful');
-				$location.path('/user/ads');
+				if (authService.isAdmin()) {
+					$location.path('/admin/home');
+				} else {
+					$location.path('/user/ads');
+				}
 			},
 			function error(err) {
 				notifyService.showError('An error occured while trying to log you in', err);
