@@ -21,9 +21,10 @@
 		<tr ng-repeat="category in categories.categories">
 			<td>{{category.id}}</td>
 			<td>{{category.username}}</td>
-			<td class="warning"><a href="admin/category/edit/{{category.id}}">Edit</a> | <a href="admin/category/delete/{{category.id}}">Delete</a></td>
+			<td class="warning"><a href="#/admin/category/edit/{{category.id}}/{{category.username}}">Edit</a> | <a href="#/admin/category/delete/{{category.id}}/{{category.username}}">Delete</a></td>
 		</tr>
 	</table>
+	<a href="#/admin/categories/new" class="btn btn-success">Create new category</a>
 </div>
 <pagination ng-if="categories.categories.length > 0" total-items="categories.numItems" ng-model="categoryParams.startPage" items-per-page="categoryParams.pageSize" ng-change="reloadCategories()" max-size="9" boundary-links="true"></pagination>
 

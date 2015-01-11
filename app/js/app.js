@@ -70,6 +70,26 @@ app.config(function ($routeProvider) {
 		templateUrl: 'templates/admin/categories.html',
 		controller: 'AdminListCategoriesController'
 	});
+	$routeProvider.when('/admin/categories', {
+		templateUrl: 'templates/admin/categories.html',
+		controller: 'AdminListCategoriesController'
+	});
+	$routeProvider.when('/admin/category/edit/:id/:categoryName', {
+		templateUrl: 'templates/admin/category/edit.html',
+		controller: 'AdminEditCategoryController'
+	});
+	$routeProvider.when('/admin/category/delete/:id/:categoryName', {
+		templateUrl: 'templates/admin/category/delete.html',
+		controller: 'AdminDeleteCategoryController'
+	});
+	$routeProvider.when('/admin/town/edit/:id/:townName', {
+		templateUrl: 'templates/admin/town/edit.html',
+		controller: 'AdminEditTownController'
+	});
+	$routeProvider.when('/admin/town/delete/:id/:townName', {
+		templateUrl: 'templates/admin/town/delete.html',
+		controller: 'AdminDeleteTownController'
+	});
 
 	$routeProvider.otherwise(
 		{ redirectTo: '/' }

@@ -87,6 +87,64 @@ app.factory('adminService',
 					headers: authService.getAuthHeaders(),
 				};
 				$http(request).success(success).error(error);
+			},
+
+			createTown: function(townData, success, error) {
+				var request = {
+					method: 'PUT',
+					url: baseServiceUrl + 'admin/towns/',
+					headers: authService.getAuthHeaders(),
+					data: townData
+				};
+				$http(request).success(success).error(error);
+			},
+
+			editTown: function(id, townData, success, error) {
+				var request = {
+					method: 'PUT',
+					url: baseServiceUrl + 'admin/towns/' + id,
+					headers: authService.getAuthHeaders(),
+					data: townData
+				};
+				$http(request).success(success).error(error);
+			},
+
+			deleteTown: function (id, success, error) {
+				var request = {
+					method: 'DELETE',
+					url: baseServiceUrl + 'admin/towns/' + id,
+					headers: authService.getAuthHeaders(),
+				};
+				$http(request).success(success).error(error);
+			},
+
+			createCategory: function(categoryData, success, error) {
+				var request = {
+					method: 'POST',
+					url: baseServiceUrl + 'admin/categories/',
+					headers: authService.getAuthHeaders(),
+					data: categoryData
+				};
+				$http(request).success(success).error(error);
+			},
+
+			editCategory: function(id, categoryData, success, error) {
+				var request = {
+					method: 'PUT',
+					url: baseServiceUrl + 'admin/categories/' + id,
+					headers: authService.getAuthHeaders(),
+					data: categoryData
+				};
+				$http(request).success(success).error(error);
+			},
+
+			deleteCategory: function (id, success, error) {
+				var request = {
+					method: 'DELETE',
+					url: baseServiceUrl + 'admin/categories/' + id,
+					headers: authService.getAuthHeaders(),
+				};
+				$http(request).success(success).error(error);
 			}
 		}
 	}

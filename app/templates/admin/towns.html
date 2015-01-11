@@ -21,9 +21,10 @@
 		<tr ng-repeat="town in towns.towns">
 			<td>{{town.id}}</td>
 			<td>{{town.username}}</td>
-			<td class="warning"><a href="admin/town/edit/{{town.id}}">Edit</a> | <a href="admin/town/delete/{{town.id}}">Delete</a></td>
+			<td class="warning"><a href="#/admin/town/edit/{{town.id}}/{{town.username}}">Edit</a> | <a href="#/admin/town/delete/{{town.id}}/{{town.username}}">Delete</a></td>
 		</tr>
 	</table>
+	<a href="#/admin/towns/new" class="btn btn-success">Create new town</a>
 </div>
 <pagination ng-if="towns.towns.length > 0" total-items="towns.numItems" ng-model="townParams.startPage" items-per-page="townParams.pageSize" ng-change="reloadTowns()" max-size="9" boundary-links="true"></pagination>
 
