@@ -91,7 +91,7 @@ app.factory('adminService',
 
 			createTown: function(townData, success, error) {
 				var request = {
-					method: 'PUT',
+					method: 'POST',
 					url: baseServiceUrl + 'admin/towns/',
 					headers: authService.getAuthHeaders(),
 					data: townData

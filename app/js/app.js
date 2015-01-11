@@ -74,6 +74,10 @@ app.config(function ($routeProvider) {
 		templateUrl: 'templates/admin/categories.html',
 		controller: 'AdminListCategoriesController'
 	});
+	$routeProvider.when('/admin/categories/new', {
+		templateUrl: 'templates/admin/category/create.html',
+		controller: 'AdminCreateCategoryController'
+	});
 	$routeProvider.when('/admin/category/edit/:id/:categoryName', {
 		templateUrl: 'templates/admin/category/edit.html',
 		controller: 'AdminEditCategoryController'
@@ -81,6 +85,10 @@ app.config(function ($routeProvider) {
 	$routeProvider.when('/admin/category/delete/:id/:categoryName', {
 		templateUrl: 'templates/admin/category/delete.html',
 		controller: 'AdminDeleteCategoryController'
+	});
+	$routeProvider.when('/admin/towns/new', {
+		templateUrl: 'templates/admin/town/create.html',
+		controller: 'AdminCreateTownController'
 	});
 	$routeProvider.when('/admin/town/edit/:id/:townName', {
 		templateUrl: 'templates/admin/town/edit.html',
